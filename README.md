@@ -1,5 +1,5 @@
 # 0x00. AirBnB clone - The console
-<img src= "https://github.com/NourhanAli10/AirBNB/blob/master/hbnb.png">
+<img src= "https://github.com/NourhanAli10/AirBnB_clone/blob/master/hbnb.png">
 
 ## First step: Write a command interpreter to manage your AirBnB objects.
 
