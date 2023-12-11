@@ -156,27 +156,33 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all
         instances based or not on the class name"""
         jsonData = self.json_to_obj()
-        obj = []
+        list = []
         if arg:
             args = arg.split(' ')
             if len(args) == 1:
                 class_name = args[0]
                 class_exist = False
                 for key, value in jsonData.items():
-                    if class_name == jsonData[key].get("__class__"):
+                    if class_name == value.get("__class__"):
                         class_exist = True
-                        class_obj = globals()[arg]
-                        instance = class_obj()
-                        obj.append(instance)
-                print(obj)
+                        object = (
+                            f"[{value['__class__']}] "
+                            f"({value['id']}) "
+                            f"{value}"
+                            )
+                        list.append(object)
+                print(list)
                 if not class_exist:
                     print("** class doesn't exist **")
         else:
             for key, value in jsonData.items():
-                class_obj = globals()[value.get("__class__")]
-                instance = class_obj()
-                obj.append(str(instance))
-            print(obj)
+                object = (
+                            f"[{value['__class__']}] "
+                            f"({value['id']}) "
+                            f"{jsonData.items()}"
+                            )
+            list.append(object)
+            print(list)
 
     def analyze_parameter_value(self, value):
         """Checks a parameter value for an update
