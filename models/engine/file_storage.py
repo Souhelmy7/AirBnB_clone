@@ -1,6 +1,4 @@
-#!/usr/bin/python3
-"""
-Defines a `FileStorage` class for serializing instances to a JSON file
+ a `FileStorage` class for serializing instances to a JSON file
 and deserializing a JSON file to instances.
 """
 
@@ -62,10 +60,9 @@ class FileStorage:
         try:
             with open(self.__file_path, "r") as file:
                 jsonData = json.load(file)
-            for key, obj_dict in jsonData.items():
-                class_name, obj_id = key.split('.')
-                cls = globals()[class_name]
-                obj = cls(**obj_dict)
-                self.__objects[key] = obj
+                for o in jsonData.values():
+                    cls_name = o["__class__"]
+                    del o["__class__"]
+                    self.new(eval(cls_name)(**o))
         except FileNotFoundError:
             pass
