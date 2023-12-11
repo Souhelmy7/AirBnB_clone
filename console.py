@@ -295,7 +295,7 @@ class HBNBCommand(cmd.Cmd):
                         )
                     print(obj)
         if not id_found:
-            pass
+            print("** no instance found **")
 
     def class_destroy(self, arg):
         """Show the string representation of an instance based
@@ -321,7 +321,8 @@ class HBNBCommand(cmd.Cmd):
                     objects = storage.all()
                     del objects[key]
                     storage.save()
-
+        if not id_found:
+            print("** no instance found **")
 
 
 if __name__ == '__main__':
