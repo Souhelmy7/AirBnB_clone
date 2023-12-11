@@ -43,6 +43,7 @@ class HBNBCommand(cmd.Cmd):
             if len(args) == 1:
                 class_name = args[0]
                 class_exist = False
+                instance_found = False
                 for key in jsonData:
                     if class_name == jsonData[key].get("__class__"):
                         class_exist = True
@@ -53,13 +54,13 @@ class HBNBCommand(cmd.Cmd):
             if len(args) == 2:
                 class_name = args[0]
                 instance_id = args[1]
-                instance_found = False
+                class_exist = False
                 for key, value in jsonData.items():
                     if (
                         class_name == value.get("__class__") and
                         instance_id == value.get("id")
                             ):
-                        instance_found = True
+                        class_exist = True
                         filtered_dict = {key: value[key]
                                          for key in value
                                          if key != '__class__'}
@@ -70,8 +71,24 @@ class HBNBCommand(cmd.Cmd):
                             )
                         key = f"{value.get('__class__')}.{value.get('id')}"
                         return key, obj
-                if not instance_found:
-                    print("** no instance found **")
+                    elif (
+                        class_name != value.get("__class__") and
+                        instance_id == value.get("id")
+                            ):
+                        print("** class doesn't exist **")
+                    elif (
+                        class_name == value.get("__class__") and
+                        instance_id != value.get("id")
+                            ):
+                        print("** no instance found **")
+                    
+                        
+                    
+                # if not instance_found:
+                               
+                # if not class_exist:
+                    
+                                          
         else:
             print("** class name missing **")
 
