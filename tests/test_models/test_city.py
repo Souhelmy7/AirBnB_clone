@@ -1,4 +1,5 @@
- unittests for models/city.py.
+#!/usr/bin/python3
+"""Defines unittests for models/city.py.
 Unittest classes:
     TestCity_instantiation
     TestCity_save

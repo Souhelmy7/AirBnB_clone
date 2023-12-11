@@ -243,7 +243,35 @@ class HBNBCommand(cmd.Cmd):
             if class_name == value.get("__class__"):
                 count += 1
         return count
-    
+
+    def default(self, line):
+        """called on an input line when the command prefix is not recognized"""
+        args = []
+        args = line.split('.')
+        jsonData = self.json_to_obj()
+        class_name = args[0]
+        class_exist = False
+        for key, value in jsonData.items():
+            if class_name == jsonData[key].get("__class__"):
+                class_exist = True
+        if class_exist:
+            if len(args) == 2:
+                if args[1] == "count()":
+                    count = self.class_count(class_name)
+                    print(count)
+                elif args[1] == "all()":
+                    self.class_all(class_name)
+                elif re.match(r'show\("([^"]+)"\)', args[1]):
+                    self.class_show(args)
+                elif re.match(r'destroy\("([^"]+)"\)', args[1]):
+                    self.class_destroy(args)
+                else:
+                    return cmd.Cmd.default(self, line)
+            else:
+                return cmd.Cmd.default(self, line)
+        else:
+            return cmd.Cmd.default(self, line)
+
     def class_show(self, arg):
         """Show the string representation of an instance based
         on the class id"""
@@ -295,34 +323,6 @@ class HBNBCommand(cmd.Cmd):
                     storage.save()
         if not id_found:
             print("** no instance found **")
-
-    def default(self, line):
-        """called on an input line when the command prefix is not recognized"""
-        args = []
-        args = line.split('.')
-        jsonData = self.json_to_obj()
-        class_name = args[0]
-        class_exist = False
-        for key, value in jsonData.items():
-            if class_name == jsonData[key].get("__class__"):
-                class_exist = True
-        if class_exist:
-            if len(args) == 2:
-                if args[1] == "count()":
-                    count = self.class_count(class_name)
-                    print(count)
-                elif args[1] == "all()":
-                    self.class_all(class_name)
-                elif re.match(r'show\("([^"]+)"\)', args[1]):
-                    self.class_show(args)
-                elif re.match(r'destroy\("([^"]+)"\)', args[1]):
-                    self.class_destroy(args)
-                else:
-                    return cmd.Cmd.default(self, line)
-            else:
-                return cmd.Cmd.default(self, line)
-        else:
-            return cmd.Cmd.default(self, line)
 
 
 if __name__ == '__main__':
