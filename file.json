@@ -1,32 +1,57 @@
 {
-  "User.d506bda3-452e-4e18-b4d9-4de39d8fdafc": {
-    "id": "d506bda3-452e-4e18-b4d9-4de39d8fdafc",
-    "created_at": "2023-12-11T18:24:42.284490",
-    "updated_at": "2023-12-11T18:24:42.284513",
+  "User.b55070b8-0558-41d3-a405-530a044d1450": {
+    "id": "b55070b8-0558-41d3-a405-530a044d1450",
+    "created_at": "2023-12-11T23:14:00.216640",
+    "updated_at": "2023-12-11T23:14:00.216663",
+    "first_name": "Betty",
+    "last_name": "Bar",
+    "email": "airbnb@mail.com",
+    "password": "root",
     "__class__": "User"
   },
-  "Place.16292621-3928-486b-8036-1830db095fd0": {
-    "id": "16292621-3928-486b-8036-1830db095fd0",
-    "created_at": "2023-12-11T19:11:25.936495",
-    "updated_at": "2023-12-11T19:11:25.936519",
+  "User.1dc667bd-7d57-48e1-bf33-e30d1afee480": {
+    "id": "1dc667bd-7d57-48e1-bf33-e30d1afee480",
+    "created_at": "2023-12-11T23:14:00.218800",
+    "updated_at": "2023-12-11T23:14:00.218812",
+    "first_name": "John",
+    "email": "airbnb2@mail.com",
+    "password": "root",
+    "__class__": "User"
+  },
+  "BaseModel.e913a953-c6d2-42d9-89ab-5617ccfa411e": {
+    "id": "e913a953-c6d2-42d9-89ab-5617ccfa411e",
+    "created_at": "2023-12-11T23:17:55.423207",
+    "updated_at": "2023-12-11T23:17:55.423231",
+    "__class__": "BaseModel"
+  },
+  "Place.e6719535-3ac8-48b9-963d-ebb42bba6006": {
+    "id": "e6719535-3ac8-48b9-963d-ebb42bba6006",
+    "created_at": "2023-12-11T23:18:04.886807",
+    "updated_at": "2023-12-11T23:18:04.886827",
     "__class__": "Place"
   },
-  "User.246ad676-e3de-4560-8920-6300913221df": {
-    "id": "246ad676-e3de-4560-8920-6300913221df",
-    "created_at": "2023-12-11T20:21:14.257470",
-    "updated_at": "2023-12-11T20:21:14.257478",
-    "__class__": "User"
+  "State.76788fc3-6ea6-446e-bb87-e0ad491afb26": {
+    "id": "76788fc3-6ea6-446e-bb87-e0ad491afb26",
+    "created_at": "2023-12-11T23:18:22.407008",
+    "updated_at": "2023-12-11T23:18:22.407032",
+    "__class__": "State"
   },
-  "Place.5e8fe149-25af-447f-a96b-69ca33b9d23d": {
-    "id": "5e8fe149-25af-447f-a96b-69ca33b9d23d",
-    "created_at": "2023-12-11T20:21:14.257521",
-    "updated_at": "2023-12-11T20:21:14.257523",
-    "__class__": "Place"
+  "City.301251d7-df50-4bfb-bb92-fb0b8d51d8c1": {
+    "id": "301251d7-df50-4bfb-bb92-fb0b8d51d8c1",
+    "created_at": "2023-12-11T23:18:25.838926",
+    "updated_at": "2023-12-11T23:18:25.838946",
+    "__class__": "City"
   },
-  "User.a490528a-b074-4802-bdee-f430a8b16bb7": {
-    "id": "a490528a-b074-4802-bdee-f430a8b16bb7",
-    "created_at": "2023-12-11T20:25:28.131510",
-    "updated_at": "2023-12-11T20:25:28.131543",
-    "__class__": "User"
+  "Amenity.4a8912bd-4a3d-4073-94ce-9aa7bed77252": {
+    "id": "4a8912bd-4a3d-4073-94ce-9aa7bed77252",
+    "created_at": "2023-12-11T23:18:33.255053",
+    "updated_at": "2023-12-11T23:18:33.255073",
+    "__class__": "Amenity"
+  },
+  "Review.3a6380b8-e080-4a71-bd3a-9af7a97c9eb7": {
+    "id": "3a6380b8-e080-4a71-bd3a-9af7a97c9eb7",
+    "created_at": "2023-12-11T23:18:39.118870",
+    "updated_at": "2023-12-11T23:18:39.118889",
+    "__class__": "Review"
   }
 }
