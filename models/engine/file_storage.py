@@ -1,4 +1,6 @@
- a `FileStorage` class for serializing instances to a JSON file
+#!/usr/bin/python3
+"""
+Defines a `FileStorage` class for serializing instances to a JSON file
 and deserializing a JSON file to instances.
 """
 
