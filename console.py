@@ -321,8 +321,7 @@ class HBNBCommand(cmd.Cmd):
                     objects = storage.all()
                     del objects[key]
                     storage.save()
-        if not id_found:
-            print("ok")
+
 
 
 if __name__ == '__main__':
