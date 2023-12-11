@@ -81,14 +81,6 @@ class HBNBCommand(cmd.Cmd):
                         instance_id != value.get("id")
                             ):
                         print("** no instance found **")
-                    
-                        
-                    
-                # if not instance_found:
-                               
-                # if not class_exist:
-                    
-                                          
         else:
             print("** class name missing **")
 
@@ -251,28 +243,58 @@ class HBNBCommand(cmd.Cmd):
             if class_name == value.get("__class__"):
                 count += 1
         return count
-
+    
     def class_show(self, arg):
         """Show the string representation of an instance based
-        on the class name and id"""
-        args = arg.split()
-        if len(args) == 0:
-            print("** class name missing **")
-            return
-        class_name = args[0]
-        if class_name not in storage.classes:
-            print("** class doesn't exist **")
-            return
-        if len(args) < 2:
-            print("** instance id missing **")
-            return
-        obj_id = args[1]
-        key = "{}.{}".format(class_name, obj_id)
-        obj = storage.all().get(key)
-        if obj is None:
+        on the class id"""
+        jsonData = self.json_to_obj()
+        id = re.compile(r'show\("([^"]+)"\)')
+        match = id.match(arg[1])
+        id_found = False
+        if match:
+            class_name = arg[0]
+            id_value = match.group(1)
+            for key, value in jsonData.items():
+                if (
+                    class_name == value.get("__class__") and
+                    id_value == value.get("id")
+                        ):
+                    id_found = True
+                    obj = (
+                        f"[{value['__class__']}] "
+                        f"({value['id']}) "
+                        f"{value}"
+                        )
+                    print(obj)
+        if not id_found:
             print("** no instance found **")
-        else:
-            print(obj)
+
+    def class_destroy(self, arg):
+        """Show the string representation of an instance based
+        on the class id"""
+        jsonData = self.json_to_obj()
+        id = re.compile(r'destroy\("([^"]+)"\)')
+        match = id.match(arg[1])
+        id_found = False
+        if match:
+            class_name = arg[0]
+            id_value = match.group(1)
+            for key, value in jsonData.items():
+                if (
+                    class_name == value.get("__class__") and
+                    id_value == value.get("id")
+                        ):
+                    id_found = True
+                    obj = (
+                        f"[{value['__class__']}] "
+                        f"({value['id']}) "
+                        f"{value}"
+                        )
+                    objects = storage.all()
+                    del objects[key]
+                    storage.save()
+        if not id_found:
+            print("** no instance found **")
 
     def default(self, line):
         """called on an input line when the command prefix is not recognized"""
@@ -291,10 +313,10 @@ class HBNBCommand(cmd.Cmd):
                     print(count)
                 elif args[1] == "all()":
                     self.class_all(class_name)
-                elif args[1] == "show()":
-                    self.class_show(class_name)
-                elif args[1] == "destroy()":
-                    self.do_destroy(class_name)
+                elif re.match(r'show\("([^"]+)"\)', args[1]):
+                    self.class_show(args)
+                elif re.match(r'destroy\("([^"]+)"\)', args[1]):
+                    self.class_destroy(args)
                 else:
                     return cmd.Cmd.default(self, line)
             else:
