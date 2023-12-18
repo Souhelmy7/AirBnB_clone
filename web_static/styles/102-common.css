@@ -1,0 +1,16 @@
+@media (min-width: 576px) {
+body {
+    margin:0;
+    padding:0;
+    color: #484848;
+    font-size: 14px;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.container {
+
+    max-width: 576px;
+    margin: 30px auto; 
+    display: flex;
+    flex-direction: column;
+}
+}
